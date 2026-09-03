@@ -360,7 +360,7 @@ The prediction pipeline ensures that the model receives valid numerical input.
 Feature engineering is one of the main components of the forecasting system.
 
 The inventory ML feature table contains:
-
+```
 store_id
 product_id
 date
@@ -376,19 +376,19 @@ weather_condition
 seasonality
 epidemic
 Lag Features
-
+```
 Historical demand was converted into lagged variables:
-
+```
 lag_1
 lag_7
 lag_14
-
+```
 These represent previous demand observations and help the model learn temporal relationships.
 
 Rolling Statistics
 
 Rolling demand statistics were created to capture local demand behavior:
-
+```
 rolling_7d_avg
 rolling_14d_avg
 rolling_30d_avg
@@ -396,32 +396,32 @@ rolling_30d_avg
 rolling_7d_std
 rolling_14d_std
 rolling_30d_std
-
+```
 These capture:
-
+```
 Short-term demand
 Medium-term demand
 Long-term demand
 Demand variability
 Temporal Features
-
+```
 Calendar features include:
-
+```
 day_of_week
 day_of_month
 month
 week_of_year
 is_weekend
-
+```
 These allow the model to learn recurring temporal demand patterns.
 
 Trend Features
 
 Demand trend variables include:
-
+```
 demand_trend_7d
 demand_trend_30d
-
+```
 These capture whether demand is increasing or decreasing over different time windows.
 
 ## 📈 Daily Demand Aggregation
@@ -429,13 +429,13 @@ These capture whether demand is increasing or decreasing over different time win
 Retail transactions were transformed into daily product-level demand.
 
 The resulting tables include:
-
+```
 product_daily_demand
 daily_product_demand
 product_daily_calendar
-
+```
 These tables contain aggregated measures such as:
-
+```
 daily quantity
 units sold
 daily revenue
@@ -443,7 +443,7 @@ sales value
 transaction count
 invoice count
 customer count
-
+```
 Daily aggregation provides a stable time-series representation for demand modelling and analysis.
 
 ## 🤖 Machine Learning Demand Forecasting
@@ -455,7 +455,7 @@ Model artifact:
 lightgbm_inventory_demand_model.pkl
 
 The model uses engineered temporal and demand-history features such as:
-
+```
 lag_1
 lag_7
 lag_14
@@ -472,7 +472,7 @@ day_of_month
 month
 week_of_year
 is_weekend
-
+```
 The model predicts the next demand value used by the replenishment system.
 
 ## 🎯 Forecasting Objective
@@ -508,6 +508,7 @@ inventory_db
 The database separates historical analytics from live operational information.
 
 ## 📋 Major Database Tables
+```
 Historical / Analytical
 historical_inventory
 inventory_ml_features
@@ -529,11 +530,11 @@ product_supplier_map
 supplier_profiles
 procurement_orders
 supply_chain_history
-
+```
 ## 🧠 SQL & Database Layer
 
 SQL is used extensively throughout the system for:
-
+```
 Data extraction
 Aggregation
 Filtering
@@ -544,9 +545,9 @@ Feature retrieval
 Operational updates
 Purchase-order storage
 Event processing
-
+```
 Examples of database operations include:
-
+```
 Store → Product → Supplier
 Store → Product → Current Inventory
 Product → Historical Demand
@@ -554,7 +555,7 @@ Supplier → Reliability Profile
 Order → Inventory Update
 Order → Reorder Decision
 Reorder → Purchase Order
-
+```
 The Python application communicates with PostgreSQL using psycopg.
 
 ##  🔁 Inventory Replay Engine
@@ -580,7 +581,7 @@ This allows a large amount of retail behavior to be replayed within a practical 
 A static dataset does not demonstrate how an inventory system behaves when transactions continuously arrive.
 
 The replay engine creates this operational environment:
-
+```
 Historical Timing
        ↓
 Inter-arrival Distribution
@@ -592,7 +593,7 @@ Retail Event
 PostgreSQL
        ↓
 Event Listener
-
+```
 This makes it possible to test the entire inventory automation pipeline.
 
 ## 📡 Event Listener
