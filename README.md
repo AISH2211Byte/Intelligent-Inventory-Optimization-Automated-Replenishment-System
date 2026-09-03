@@ -910,11 +910,15 @@ The email system uses Gmail SMTP authentication with an application-specific pas
 
 Email configuration is stored outside the source code using environment variables.
 
+The .env file is kept outside version-controlled source files.
+
 EMAIL_SENDER
 EMAIL_PASSWORD
 EMAIL_RECEIVER
 
-The .env file is kept outside version-controlled source files.
+                                                    AUTOMATED EMAIL SENDING
+<img width="250" height="550" alt="image" src="https://github.com/user-attachments/assets/69193cb0-94c0-40ca-8470-823bdd35399b" />
+
 
 ## 📦 Fulfillment Engine
 
@@ -1034,6 +1038,9 @@ inventory_project/
 ├── requirements.txt
 └── README.md
 ```
+                                                          AUTOMATED BI REFRESH
+<img width="1517" height="830" alt="image" src="https://github.com/user-attachments/assets/b651a77e-71df-4627-8e02-857c3208e91a" />
+
 ## 🛠️ Technology Stack
 ```
 Programming
